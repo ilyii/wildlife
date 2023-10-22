@@ -158,6 +158,7 @@ cython_debug/
 
 # Dirs
 runs/
+**/gradio-app/
 # Models
 .pt
 .pth

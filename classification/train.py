@@ -45,7 +45,7 @@ if __name__ == '__main__':
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
-    for epoch in range(10):
+    for epoch in range(cfg.num_epochs):
         for images, labels in tqdm(dataloader_train, desc=f'[TRAIN] Epoch {epoch + 1}'):
             images, labels = images.to(torch.device('cuda' if torch.cuda.is_available() else 'cpu')), labels.to(torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
             outputs = model(images)
