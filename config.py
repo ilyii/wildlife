@@ -15,3 +15,8 @@ class Config:
     num_epochs = 100
 
 
+if __name__ == '__main__':
+    from pathlib import Path
+    images = [Path(Config.datapath).rglob(f'*.{ext}') for ext in ['jpg', 'png', 'jpeg']]
+    
+    print(len(list(images[0])) + len(list(images[1])) + len(list(images[2])))
