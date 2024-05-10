@@ -1,14 +1,25 @@
 import numpy as np
-import torch
 import matplotlib.pyplot as plt
 import cv2
 
+COLORS = np.array([
+    (255, 204, 204),  # Light Pink
+    (204, 255, 204),  # Light Green
+    (204, 204, 255),  # Light Blue
+    (255, 255, 204),  # Light Yellow
+    (255, 204, 255),  # Light Purple
+    (204, 255, 255),  # Light Cyan
+    (255, 230, 204),  # Light Orange
+    (230, 204, 255),  # Light Lavender
+    (204, 255, 230),  # Light Mint
+    (255, 204, 230)   # Light Coral
+])
 
-def get_mask(mask, random_color=False):
-    if random_color:
-        color = np.concatenate([np.random.random(3), np.array([0.6])], axis=0)
-    else:
-        color = np.array([255, 0, 0, 0.6])
+
+def get_mask(mask):
+    color = np.random.choice(COLORS)
+    print(color)
+    color = np.array(COLORS[color]) 
     h, w = mask.shape[-2:]
     mask_image = mask.reshape(h, w, 1) * color.reshape(1, 1, -1)
     return mask_image
